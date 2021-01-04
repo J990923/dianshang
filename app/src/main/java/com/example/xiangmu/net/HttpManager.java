@@ -69,7 +69,7 @@ public class HttpManager {
             Response response = chain.proceed(request);
             ResponseBody responseBody = response.peekBody(Integer.MAX_VALUE);
             Log.i("responseBody",responseBody.string());
-            return chain.proceed(request);
+            return response;
         }
     }
 

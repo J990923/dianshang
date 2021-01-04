@@ -22,6 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.topic.activity.SpecialCommentActivity"/>
+
         <activity android:name=".ui.topic.activity.SpecialDetailsActivity"/>
         <activity android:name=".ui.me.collect.FavoritesActivity"/>
         <activity android:name=".ui.me.Head_PortraitActivity"/>
@@ -37,8 +38,6 @@
         <activity android:name=".ui.home.activity.BrandActivity"/>
         <activity android:name=".ui.home.activity.BrandLIstActivity"/>
         <activity android:name=".MainActivity">
-
-
         </activity>
     </application>
 

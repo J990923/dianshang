@@ -101,6 +101,8 @@ public class SplaceFragment extends Fragment implements View.OnClickListener {
             if(time < 0){
                 //调整到主页
                 goMain();
+
+
             }else{
                 Message msg = new Message();
                 msg.what = 1;
@@ -126,7 +128,8 @@ public class SplaceFragment extends Fragment implements View.OnClickListener {
     }
 
     private void goMain(){
-        Intent intent = new Intent(getContext(), MainActivity.class);
+        live=false;
+        Intent intent = new Intent(getActivity(), MainActivity.class);
         startActivity(intent);
         getActivity().finish();
     }

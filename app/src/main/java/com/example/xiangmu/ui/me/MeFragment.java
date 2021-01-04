@@ -2,11 +2,13 @@ package com.example.xiangmu.ui.me;
 
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.example.xiangmu.R;
+import com.example.xiangmu.app.MyApp;
 import com.example.xiangmu.base.BaseFragment;
 import com.example.xiangmu.interfaces.IBasePresenter;
 import com.example.xiangmu.ui.login.LoginActivity;
@@ -28,6 +30,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.xiangmu.ui.me.collect.FavoritesActivity;
 import com.example.xiangmu.utils.SpUtils;
 import com.example.xiangmu.utils.ToastUtils;
+import com.live.RoomActivity;
 
 
 import butterknife.BindView;
@@ -37,10 +40,13 @@ import butterknife.OnClick;
 public class MeFragment extends BaseFragment {
     @BindView(R.id.ll_my_address)
     LinearLayout ll_address;
+    @BindView(R.id.ll_streaming)
+    LinearLayout ll_streaming;
     @BindView(R.id.iv_my_img)
     ImageView iv_Img;
     /*@BindView(R.id.iv_my_return)
     ImageView iv_Return;*/
+
 
 
     public static final int LOGIN_ME = 10001; //登录成功的回传值
@@ -65,9 +71,13 @@ public class MeFragment extends BaseFragment {
         return null;
     }
 
-    @OnClick({R.id.ll_my_address, R.id.ll_five_collect, R.id.iv_my_img, R.id.tv_my_login})
+    @OnClick({R.id.ll_my_address, R.id.ll_five_collect, R.id.iv_my_img, R.id.tv_my_login,R.id.ll_streaming})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            case R.id.ll_streaming://开启直播
+                Intent intent = new Intent(getActivity(), RoomActivity.class);
+                startActivity(intent);
+                break;
             case R.id.ll_my_address://地址管理
                /* Intent intent = new Intent(getActivity(), AddressActivity.class);
                 startActivity(intent);*/
@@ -78,7 +88,7 @@ public class MeFragment extends BaseFragment {
                 break;
             case R.id.iv_my_img://点击头像
                 Intent intent2 = new Intent(getActivity(), Head_PortraitActivity.class);
-                startActivity(intent2);
+                startActivityForResult(intent2,LOGINOUT_ME);
                 break;
        /*     case R.id.iv_my_return://退出登录
                 loginOut();
@@ -97,6 +107,9 @@ public class MeFragment extends BaseFragment {
             String name = data.getStringExtra("name");//登录之后显示名字
             tv_Login.setText(name);
         }
+        if(requestCode == LOGINOUT_ME&&resultCode==200){
+                loginOut();
+        }
     }
 
     //判断是否登录
@@ -111,7 +124,8 @@ public class MeFragment extends BaseFragment {
 
     //TODO 退出登录
     private void loginOut() {
-
+        SpUtils.getInstance().remove("token");
+        isLogin(false);
     }
 
     //TODO 打开登录页面
@@ -142,6 +156,8 @@ public class MeFragment extends BaseFragment {
             }
             //ImageLoaderUtils.loadImage(avatar, iv_Img);
             String img = SpUtils.getInstance().getString("img");
+            Log.i(TAG, "isLogin: "+img);
+
             if (!TextUtils.isEmpty(img)) {
                 //上传头像后选择头像并返回
                 Glide.with(this).load(img).apply(new RequestOptions().circleCrop()).into(iv_Img);
@@ -153,6 +169,7 @@ public class MeFragment extends BaseFragment {
     //TODO 登录成功
     public void loginSuccess() {
         isLogin(true);
+
     }
 
     @Override
@@ -165,4 +182,13 @@ public class MeFragment extends BaseFragment {
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        String txtName =  SpUtils.getInstance().getString("txtName");
+
+        tv_Login.setText(txtName);
+    }
+
+    private static final String TAG = "MeFragment";
 }

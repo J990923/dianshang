@@ -41,6 +41,7 @@
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -63,6 +64,23 @@
             layout="@layout/layout_head_portrait_include" />
 
     </LinearLayout>
-
+    <Button
+        android:id="@+id/button"
+        android:text="退出登录"
+        android:layout_marginTop="@dimen/dp_30"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/btn_Save"
+        android:text="确定修改"
+        android:layout_marginTop="@dimen/dp_30"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

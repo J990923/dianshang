@@ -19,11 +19,11 @@
             android:layout_marginHorizontal="@dimen/dp_30"
             android:text="商品合计" />
 
-        <TextView
+        <EditText
             android:id="@+id/tv_head_portrait_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/dp_6"
+            android:layout_marginRight="@dimen/dp_20"
             android:layout_toLeftOf="@id/iv_head_portrait_img"
             android:text="46"
             android:textColor="#23FFFB"

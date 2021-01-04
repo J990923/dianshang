@@ -2,6 +2,7 @@ package com.example.xiangmu.api;
 
 
 
+import com.example.xiangmu.model.Login.LogoutBean;
 import com.example.xiangmu.model.Login.MeRegisterBean;
 import com.example.xiangmu.model.home.bean.BrandBean;
 import com.example.xiangmu.model.home.bean.CategoryBean;
@@ -13,6 +14,8 @@ import com.example.xiangmu.model.home.bean.SPGoodsRelated;
 import com.example.xiangmu.model.home.bean.Shop_AddBean;
 import com.example.xiangmu.model.home.bean.SortBean;
 import com.example.xiangmu.model.home.bean.SortDataBean;
+import com.example.xiangmu.model.me.RegisterBean;
+import com.example.xiangmu.model.me.UserInfoBean;
 import com.example.xiangmu.model.shap.AddCarBean;
 import com.example.xiangmu.model.shap.CarBean;
 import com.example.xiangmu.model.shap.DeleteCarBean;
@@ -109,4 +112,18 @@ public interface ShopApi {
     //专题底部列表
     @GET("api/topic/related")
     Flowable<SpecialDetailsButtomBean> getSpecialDetailsButtom(@Query("id") int id);
+    //用户信息更新
+    @POST("api/user/updateUserInfo")
+    @FormUrlEncoded
+    Flowable<UserInfoBean> updateUserInfo(@FieldMap Map<String,String> map);
+
+
+    //注册
+    @POST("api/auth/registernew")
+    @FormUrlEncoded
+    Flowable<RegisterBean> register(@FieldMap Map<String,String> map);
+
+    //退出登录
+    @POST("api/auth/logout")
+    Flowable<LogoutBean> logout();
 }

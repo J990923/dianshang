@@ -103,7 +103,7 @@ public class SplaceActivity extends BaseActivity {
         });
     }
 
-
+//设置显示影藏
     private void resetDots(){
         img_1_normal.setVisibility(View.VISIBLE);
         img_2_normal.setVisibility(View.VISIBLE);
