@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.xiangmu">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:name=".app.MyApp"
+        android:requestLegacyExternalStorage="true"
+        android:usesCleartextTraffic="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".SplaceActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.topic.activity.SpecialCommentActivity"/>
+
+        <activity android:name="com.live.LiveActivity"/>
+        <activity android:name="com.live.PushActivity"/>
+        <activity android:name="com.live.RoomActivity"/>
+        <activity android:name=".ui.topic.activity.SpecialDetailsActivity"/>
+        <activity android:name=".ui.me.collect.FavoritesActivity"/>
+        <activity android:name=".ui.me.Head_PortraitActivity"/>
+        <activity android:name=".ui.location.LocationActivity"/>
+        <activity android:name=".ui.login.MeRegistActivity"/>
+        <activity android:name=".ui.login.LoginActivity"/>
+        <activity android:name=".ui.sort.TypeInfoListActivity"/>
+        <activity android:name=".ui.home.activity.BigImageActivity"/>
+        <activity android:name=".ui.home.activity.GoogsDetailActicity"/>
+        <activity android:name=".ui.home.activity.HotGoodActivity"/>
+        <activity android:name=".ui.home.activity.BrandListDetailsActivity"/>
+        <activity android:name=".ui.home.activity.CategoryActivity"/>
+        <activity android:name=".ui.home.activity.BrandActivity"/>
+        <activity android:name=".ui.home.activity.BrandLIstActivity"/>
+        <activity android:name=".MainActivity">
+        </activity>
+    </application>
+
+</manifest>
